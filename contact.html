@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ – TRAKON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1A1E2E;--orange:#E8622A;--orange-lt:#F07842;
+  --bg:#F7F8FA;--text:#1A1E2E;--text-mid:#5A607A;--text-lt:#9BA3BF;
+  --border:#E2E5EF;--red:#E84040;--green:#27AE60;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
+nav{background:var(--navy);height:64px;padding:0 64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-icon{width:32px;height:32px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:white;}
+.nav-brand{font-size:18px;font-weight:700;color:white;letter-spacing:3px;}
+.nav-sub{font-size:9px;color:rgba(255,255,255,.35);font-family:'DM Mono',monospace;letter-spacing:1.5px;margin-top:2px;}
+.nav-back{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .15s;font-weight:500;}
+.nav-back:hover{color:white;}
+
+.page-hero{background:var(--navy);padding:56px 64px 64px;border-bottom:1px solid rgba(255,255,255,.06);}
+.page-hero-inner{max-width:640px;margin:0 auto;}
+.page-label{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:rgba(232,98,42,.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.page-label::before{content:'';width:20px;height:2px;background:var(--orange);opacity:.6;border-radius:1px;}
+.page-title{font-size:36px;font-weight:700;color:white;letter-spacing:-1px;margin-bottom:10px;}
+.page-desc{font-size:15px;color:rgba(255,255,255,.5);line-height:1.7;}
+
+.content-wrap{max-width:640px;margin:0 auto;padding:64px 64px 120px;}
+
+/* FORM CARD */
+.form-card{background:white;border-radius:16px;padding:48px;box-shadow:0 2px 16px rgba(26,30,46,.07);border:1px solid var(--border);}
+
+.form-group{margin-bottom:28px;}
+.form-label{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;color:var(--text);
+  margin-bottom:8px;
+}
+.form-required{
+  font-size:10px;font-weight:700;
+  color:white;background:var(--orange);
+  padding:2px 7px;border-radius:4px;
+  font-family:'DM Mono',monospace;letter-spacing:.5px;
+}
+.form-optional{
+  font-size:10px;font-weight:600;
+  color:var(--text-lt);background:var(--bg);
+  padding:2px 7px;border-radius:4px;
+  font-family:'DM Mono',monospace;letter-spacing:.5px;
+  border:1px solid var(--border);
+}
+
+.form-input,
+.form-select,
+.form-textarea{
+  width:100%;
+  padding:12px 16px;
+  border:1.5px solid var(--border);
+  border-radius:9px;
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;color:var(--text);
+  background:white;
+  transition:border-color .15s, box-shadow .15s;
+  outline:none;
+  appearance:none;
+  -webkit-appearance:none;
+}
+.form-input::placeholder,
+.form-textarea::placeholder{color:var(--text-lt);}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus{
+  border-color:var(--orange);
+  box-shadow:0 0 0 3px rgba(232,98,42,.1);
+}
+.form-input.error,
+.form-select.error,
+.form-textarea.error{
+  border-color:var(--red);
+  box-shadow:0 0 0 3px rgba(232,64,64,.08);
+}
+
+/* select arrow */
+.select-wrap{position:relative;}
+.select-wrap::after{
+  content:'▾';
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  font-size:13px;color:var(--text-lt);pointer-events:none;
+}
+.form-select{padding-right:36px;cursor:pointer;}
+.form-select option[value=""]{color:var(--text-lt);}
+
+.form-textarea{resize:vertical;min-height:148px;line-height:1.7;}
+
+/* error msg */
+.error-msg{
+  display:none;
+  margin-top:6px;
+  font-size:12px;color:var(--red);font-weight:500;
+  align-items:center;gap:5px;
+}
+.error-msg.show{display:flex;}
+.error-msg::before{content:'!';width:16px;height:16px;border-radius:50%;background:var(--red);color:white;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* char count */
+.char-count{
+  text-align:right;font-size:11px;color:var(--text-lt);
+  margin-top:5px;font-family:'DM Mono',monospace;
+}
+.char-count.warn{color:var(--orange);}
+
+/* checkbox */
+.checkbox-wrap{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:18px 20px;
+  background:var(--bg);border-radius:10px;
+  border:1.5px solid var(--border);
+  cursor:pointer;transition:border-color .15s;
+}
+.checkbox-wrap:hover{border-color:var(--orange);}
+.checkbox-wrap.error{border-color:var(--red);}
+.checkbox-input{
+  width:18px;height:18px;
+  border:2px solid var(--border);border-radius:5px;
+  flex-shrink:0;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background:white;margin-top:1px;
+  transition:all .15s;position:relative;
+}
+.checkbox-input:checked{
+  background:var(--orange);border-color:var(--orange);
+}
+.checkbox-input:checked::after{
+  content:'✓';
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-size:11px;color:white;font-weight:800;
+}
+.checkbox-label{font-size:13px;color:var(--text-mid);line-height:1.6;cursor:pointer;}
+.checkbox-label a{color:var(--orange);text-decoration:none;}
+.checkbox-label a:hover{text-decoration:underline;}
+
+/* submit */
+.submit-btn{
+  width:100%;padding:15px;
+  background:var(--orange);color:white;
+  border:none;border-radius:11px;
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:32px;
+}
+.submit-btn:hover{background:var(--orange-lt);transform:translateY(-1px);box-shadow:0 8px 24px rgba(232,98,42,.3);}
+.submit-btn:active{transform:translateY(0);}
+.submit-btn:disabled{background:var(--text-lt);cursor:not-allowed;transform:none;box-shadow:none;}
+
+.submit-note{
+  text-align:center;margin-top:16px;
+  font-size:12px;color:var(--text-lt);line-height:1.8;
+}
+
+/* COMPLETE */
+.complete-card{
+  display:none;
+  background:white;border-radius:16px;padding:64px 48px;
+  box-shadow:0 2px 16px rgba(26,30,46,.07);border:1px solid var(--border);
+  text-align:center;
+}
+.complete-card.show{display:block;}
+.complete-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(39,174,96,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;margin:0 auto 24px;
+}
+.complete-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:14px;}
+.complete-body{font-size:14px;color:var(--text-mid);line-height:1.85;margin-bottom:32px;}
+.back-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 28px;
+  background:var(--navy);color:white;
+  border-radius:9px;text-decoration:none;
+  font-size:13px;font-weight:600;transition:background .15s;
+}
+.back-btn:hover{background:#2E3352;}
+
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:36px 64px;display:flex;align-items:center;justify-content:space-between;}
+.ft-logo{display:flex;align-items:center;gap:10px;}
+.ft-icon{width:28px;height:28px;background:var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white;}
+.ft-brand{font-size:15px;font-weight:700;color:white;letter-spacing:3px;}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.25);font-family:'DM Mono',monospace;}
+.ft-links{display:flex;gap:24px;}
+.ft-link{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .15s;}
+.ft-link:hover{color:rgba(255,255,255,.7);}
+
+@media(max-width:768px){
+  nav,.page-hero{padding-left:24px;padding-right:24px;}
+  .content-wrap{padding:40px 24px 80px;}
+  .form-card,.complete-card{padding:32px 24px;}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;}
+  .ft-links{justify-content:center;flex-wrap:wrap;}
+  .page-title{font-size:28px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <div class="nav-icon">T</div>
+    <div>
+      <div class="nav-brand">TRAKON</div>
+      <div class="nav-sub">Keep the ball moving.</div>
+    </div>
+  </a>
+  <a class="nav-back" href="/">← トップに戻る</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-label">Contact</div>
+    <h1 class="page-title">お問い合わせ</h1>
+    <p class="page-desc">ご質問・ご相談はお気軽にどうぞ。<br>通常、2営業日以内を目安にご返信します。</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+  <!-- FORM -->
+  <div class="form-card" id="form-card">
+    <form id="contact-form" novalidate>
+
+      <!-- お名前 -->
+      <div class="form-group">
+        <label class="form-label" for="name">
+          お名前 <span class="form-required">必須</span>
+        </label>
+        <input
+          class="form-input" type="text" id="name" name="name"
+          placeholder="例：佐藤 健一"
+          autocomplete="name"
+          maxlength="100"
+        >
+        <div class="error-msg" id="err-name">お名前を入力してください。</div>
+      </div>
+
+      <!-- メールアドレス -->
+      <div class="form-group">
+        <label class="form-label" for="email">
+          メールアドレス <span class="form-required">必須</span>
+        </label>
+        <input
+          class="form-input" type="email" id="email" name="email"
+          placeholder="例：contact@example.jp"
+          autocomplete="email"
+          maxlength="200"
+        >
+        <div class="error-msg" id="err-email-empty">メールアドレスを入力してください。</div>
+        <div class="error-msg" id="err-email-format">メールアドレスの形式をご確認ください。</div>
+      </div>
+
+      <!-- 会社名 -->
+      <div class="form-group">
+        <label class="form-label" for="company">
+          会社名 <span class="form-optional">任意</span>
+        </label>
+        <input
+          class="form-input" type="text" id="company" name="company"
+          placeholder="例：○○デザイン"
+          autocomplete="organization"
+          maxlength="200"
+        >
+      </div>
+
+      <!-- お問い合わせ種別 -->
+      <div class="form-group">
+        <label class="form-label" for="category">
+          お問い合わせ種別 <span class="form-required">必須</span>
+        </label>
+        <div class="select-wrap">
+          <select class="form-select" id="category" name="category">
+            <option value="">選択してください</option>
+            <option value="service">サービスについて</option>
+            <option value="price">料金について</option>
+            <option value="consult">導入相談</option>
+            <option value="bug">不具合報告</option>
+            <option value="media">取材・提携について</option>
+            <option value="other">その他</option>
+          </select>
+        </div>
+        <div class="error-msg" id="err-category">お問い合わせ種別を選択してください。</div>
+      </div>
+
+      <!-- お問い合わせ内容 -->
+      <div class="form-group">
+        <label class="form-label" for="message">
+          お問い合わせ内容 <span class="form-required">必須</span>
+        </label>
+        <textarea
+          class="form-textarea" id="message" name="message"
+          placeholder="お問い合わせ内容をご記入ください"
+          maxlength="2000"
+        ></textarea>
+        <div class="char-count" id="char-count">0 / 2000</div>
+        <div class="error-msg" id="err-message-empty">お問い合わせ内容を入力してください。</div>
+        <div class="error-msg" id="err-message-short">内容をもう少し詳しくご記入ください。</div>
+      </div>
+
+      <!-- プライバシーポリシー同意 -->
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="checkbox-wrap" id="privacy-wrap" for="privacy_agree">
+          <input class="checkbox-input" type="checkbox" id="privacy_agree" name="privacy_agree">
+          <span class="checkbox-label">
+            <a href="/privacy" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>に同意のうえ、送信します。
+          </span>
+        </label>
+        <div class="error-msg" id="err-privacy">プライバシーポリシーへの同意が必要です。</div>
+      </div>
+
+      <button class="submit-btn" type="submit" id="submit-btn">
+        送信する
+      </button>
+
+      <p class="submit-note">
+        通常、2営業日以内を目安にご返信します。<br>
+        内容により、お返事までにお時間をいただく場合があります。
+      </p>
+
+    </form>
+  </div>
+
+  <!-- COMPLETE -->
+  <div class="complete-card" id="complete-card">
+    <div class="complete-icon">✓</div>
+    <div class="complete-title">お問い合わせを受け付けました</div>
+    <div class="complete-body">
+      お問い合わせありがとうございます。<br>
+      内容を確認のうえ、通常2営業日以内を目安にご返信します。<br><br>
+      しばらく経っても返信がない場合は、お手数ですが<br>
+      再度ご連絡いただけますと幸いです。
+    </div>
+    <a class="back-btn" href="/">← トップページに戻る</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft-logo">
+    <div class="ft-icon">T</div>
+    <div class="ft-brand">TRAKON</div>
+  </div>
+  <div class="ft-copy">Keep the ball moving.</div>
+  <div class="ft-links">
+    <a class="ft-link" href="/company">会社概要</a>
+    <a class="ft-link" href="/terms">利用規約</a>
+    <a class="ft-link" href="/privacy">プライバシーポリシー</a>
+    <a class="ft-link" href="/commerce">特定商取引法に基づく表記</a>
+    <a class="ft-link" href="/contact">お問い合わせ</a>
+  </div>
+  <div class="ft-copy">© 2026 株式会社おさまるカンパニー</div>
+</footer>
+
+<script>
+// 文字数カウント
+const message = document.getElementById('message');
+const charCount = document.getElementById('char-count');
+message.addEventListener('input', () => {
+  const len = message.value.length;
+  charCount.textContent = `${len} / 2000`;
+  charCount.classList.toggle('warn', len > 1800);
+});
+
+// エラー表示ヘルパー
+function showError(id) {
+  document.getElementById(id).classList.add('show');
+}
+function hideError(id) {
+  document.getElementById(id).classList.remove('show');
+}
+function setFieldError(el, hasError) {
+  el.classList.toggle('error', hasError);
+}
+function setWrapError(el, hasError) {
+  el.classList.toggle('error', hasError);
+}
+
+// リアルタイムエラークリア
+document.getElementById('name').addEventListener('input', function() {
+  setFieldError(this, false); hideError('err-name');
+});
+document.getElementById('email').addEventListener('input', function() {
+  setFieldError(this, false);
+  hideError('err-email-empty'); hideError('err-email-format');
+});
+document.getElementById('category').addEventListener('change', function() {
+  setFieldError(this, false); hideError('err-category');
+});
+message.addEventListener('input', function() {
+  setFieldError(this, false);
+  hideError('err-message-empty'); hideError('err-message-short');
+});
+document.getElementById('privacy_agree').addEventListener('change', function() {
+  setWrapError(document.getElementById('privacy-wrap'), false);
+  hideError('err-privacy');
+});
+
+// バリデーション
+function validate() {
+  let valid = true;
+
+  // お名前
+  const name = document.getElementById('name');
+  if (!name.value.trim()) {
+    setFieldError(name, true); showError('err-name'); valid = false;
+  }
+
+  // メール
+  const email = document.getElementById('email');
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email.value.trim()) {
+    setFieldError(email, true); showError('err-email-empty'); valid = false;
+  } else if (!emailRe.test(email.value.trim())) {
+    setFieldError(email, true); showError('err-email-format'); valid = false;
+  }
+
+  // 種別
+  const category = document.getElementById('category');
+  if (!category.value) {
+    setFieldError(category, true); showError('err-category'); valid = false;
+  }
+
+  // 内容
+  const msg = message.value.trim();
+  if (!msg) {
+    setFieldError(message, true); showError('err-message-empty'); valid = false;
+  } else if (msg.length < 5) {
+    setFieldError(message, true); showError('err-message-short'); valid = false;
+  }
+
+  // 同意
+  const privacy = document.getElementById('privacy_agree');
+  const privacyWrap = document.getElementById('privacy-wrap');
+  if (!privacy.checked) {
+    setWrapError(privacyWrap, true); showError('err-privacy'); valid = false;
+  }
+
+  return valid;
+}
+
+// 送信
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (!validate()) {
+    // 最初のエラー項目にスクロール
+    const firstError = document.querySelector('.form-input.error, .form-select.error, .form-textarea.error, .checkbox-wrap.error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // 送信処理（バックエンド未接続の場合は完了画面を表示）
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '送信中...';
+
+  // ※ 実際の送信処理はここに実装
+  // fetch('/api/contact', { method: 'POST', body: new FormData(this) })
+  //   .then(res => res.ok ? showComplete() : alert('送信に失敗しました。'))
+  //   .catch(() => alert('送信に失敗しました。'))
+  //   .finally(() => { btn.disabled = false; btn.textContent = '送信する'; });
+
+  // デモ用：1秒後に完了画面
+  setTimeout(showComplete, 1000);
+});
+
+function showComplete() {
+  document.getElementById('form-card').style.display = 'none';
+  const complete = document.getElementById('complete-card');
+  complete.classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー – TRAKON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1A1E2E; --navy-mid:#2E3352;
+  --orange:#E8622A;
+  --bg:#F7F8FA;
+  --text:#1A1E2E; --text-mid:#5A607A; --text-lt:#9BA3BF;
+  --border:#E2E5EF;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
+nav{background:var(--navy);height:64px;padding:0 64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-icon{width:32px;height:32px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:white;}
+.nav-brand{font-size:18px;font-weight:700;color:white;letter-spacing:3px;}
+.nav-sub{font-size:9px;color:rgba(255,255,255,.35);font-family:'DM Mono',monospace;letter-spacing:1.5px;margin-top:2px;}
+.nav-back{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .15s;font-weight:500;}
+.nav-back:hover{color:white;}
+.page-hero{background:var(--navy);padding:56px 64px 64px;border-bottom:1px solid rgba(255,255,255,.06);}
+.page-hero-inner{max-width:760px;margin:0 auto;}
+.page-label{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:rgba(232,98,42,.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.page-label::before{content:'';width:20px;height:2px;background:var(--orange);opacity:.6;border-radius:1px;}
+.page-title{font-size:36px;font-weight:700;color:white;letter-spacing:-1px;margin-bottom:12px;}
+.page-meta{display:flex;align-items:center;gap:20px;font-size:12px;color:rgba(255,255,255,.35);font-family:'DM Mono',monospace;letter-spacing:.5px;}
+.page-meta-sep{color:rgba(255,255,255,.15);}
+.content-wrap{max-width:760px;margin:0 auto;padding:64px 64px 120px;}
+.pp-intro{font-size:14px;line-height:1.85;color:var(--text-mid);padding:24px 28px;background:white;border-radius:12px;border-left:4px solid var(--orange);box-shadow:0 2px 8px rgba(26,30,46,.06);margin-bottom:48px;}
+.pp-article{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border);}
+.pp-article:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.pp-article h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px;padding-left:14px;border-left:3px solid var(--orange);line-height:1.4;}
+.pp-article p{font-size:14px;line-height:1.9;color:var(--text-mid);margin-bottom:12px;}
+.pp-article p:last-child{margin-bottom:0;}
+.pp-article h4{font-size:13px;font-weight:700;color:var(--text);margin:18px 0 10px;}
+.pp-article ul{margin:8px 0 12px 20px;display:flex;flex-direction:column;gap:7px;}
+.pp-article ul li{font-size:14px;line-height:1.75;color:var(--text-mid);list-style:disc;}
+.contact-box{background:white;border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin-top:14px;display:flex;flex-direction:column;gap:10px;}
+.contact-row{display:flex;align-items:baseline;gap:12px;}
+.contact-label{font-size:11px;font-weight:700;color:var(--text-lt);font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;min-width:72px;flex-shrink:0;}
+.contact-val{font-size:14px;color:var(--text-mid);line-height:1.6;}
+.contact-val a{color:var(--orange);text-decoration:none;}
+.contact-val a:hover{text-decoration:underline;}
+.pp-footer{margin-top:48px;padding:24px 28px;background:white;border-radius:12px;text-align:center;border:1px solid var(--border);}
+.pp-footer-label{font-size:10px;font-weight:700;color:var(--text-lt);font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.pp-footer-date{font-size:14px;color:var(--text-mid);}
+.pp-footer-date strong{color:var(--text);font-weight:700;}
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:36px 64px;display:flex;align-items:center;justify-content:space-between;}
+.ft-logo{display:flex;align-items:center;gap:10px;}
+.ft-icon{width:28px;height:28px;background:var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white;}
+.ft-brand{font-size:15px;font-weight:700;color:white;letter-spacing:3px;}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.25);font-family:'DM Mono',monospace;}
+.ft-links{display:flex;gap:24px;}
+.ft-link{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .15s;}
+.ft-link:hover{color:rgba(255,255,255,.7);}
+@media(max-width:768px){
+  nav,.page-hero{padding-left:24px;padding-right:24px;}
+  .content-wrap{padding:40px 24px 80px;}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;}
+  .ft-links{justify-content:center;}
+  .page-title{font-size:28px;}
+  .contact-row{flex-direction:column;gap:4px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <div class="nav-icon">T</div>
+    <div>
+      <div class="nav-brand">TRAKON</div>
+      <div class="nav-sub">Keep the ball moving.</div>
+    </div>
+  </a>
+  <a class="nav-back" href="/">← トップに戻る</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-label">Privacy</div>
+    <h1 class="page-title">プライバシーポリシー</h1>
+    <div class="page-meta">
+      <span>株式会社おさまるカンパニー</span>
+      <span class="page-meta-sep">|</span>
+      <span>施行日：2026年6月1日</span>
+    </div>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+  <div class="pp-intro">
+    株式会社おさまるカンパニー（以下「当社」といいます。）は、当社が提供する「TRAKON」その他これに関連する一切のサービス（以下「本サービス」といいます。）において取得するユーザーに関する情報について、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます。）を定めます。
+  </div>
+
+  <div class="pp-article">
+    <h3>第1条（基本方針）</h3>
+    <p>当社は、本サービスにおいて取得するユーザーに関する情報を、個人情報の保護に関する法令その他の関係法令を遵守し、適切に取得、利用、管理および保護します。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第2条（取得する情報）</h3>
+    <p>当社は、本サービスの提供にあたり、以下の情報を取得することがあります。</p>
+    <h4>1．ユーザーが入力または提供する情報</h4>
+    <ul>
+      <li>会社名</li>
+      <li>氏名または表示名</li>
+      <li>メールアドレス</li>
+      <li>その他、ユーザーが本サービス上で入力、登録または送信する情報</li>
+    </ul>
+    <h4>2．外部認証サービスを通じて取得する情報</h4>
+    <p>当社は、Google、Microsoftその他当社が対応する外部認証サービスを利用したログインに関連して、以下の情報を取得することがあります。</p>
+    <ul>
+      <li>外部認証サービスにおけるユーザー識別子</li>
+      <li>氏名または表示名</li>
+      <li>メールアドレス</li>
+      <li>プロフィール画像</li>
+      <li>その他、ユーザーが認証時に同意した範囲で提供される情報</li>
+    </ul>
+    <h4>3．本サービスの利用に伴い取得する情報</h4>
+    <ul>
+      <li>ログイン日時</li>
+      <li>利用日時</li>
+      <li>操作履歴</li>
+      <li>IPアドレス</li>
+      <li>Cookieその他これに類する識別情報</li>
+      <li>契約者、ユーザーまたは外部閲覧者が本サービスを閲覧または利用した際に取得されるアクセス情報その他の利用情報</li>
+    </ul>
+    <h4>4．決済に関連して取得する情報</h4>
+    <p>当社は、有料プランの提供にあたり、決済代行会社を通じて決済を行う場合があります。この場合、当社は以下の情報を取得することがあります。</p>
+    <ul>
+      <li>契約者名</li>
+      <li>請求先情報</li>
+      <li>利用プラン</li>
+      <li>課金状況</li>
+      <li>支払履歴</li>
+      <li>決済に関連する識別情報</li>
+    </ul>
+    <p>なお、クレジットカード番号その他の決済情報の全部または一部については、当社ではなく決済代行会社が取得、保管および管理する場合があります。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第3条（利用目的）</h3>
+    <p>当社は、取得した情報を、以下の目的のために利用します。</p>
+    <ul>
+      <li>本サービスの提供、運営、維持および改善のため</li>
+      <li>本人確認、ログイン認証およびアカウント管理のため</li>
+      <li>有料プランの申込み受付、課金、請求、支払確認および契約管理のため</li>
+      <li>お問い合わせ対応、サポート対応および本人への連絡のため</li>
+      <li>不正利用、不正アクセス、利用規約違反その他問題行為の防止、調査および対応のため</li>
+      <li>障害調査、品質改善、保守およびセキュリティ対策のため</li>
+      <li>本サービスに関する重要なお知らせ、メンテナンス情報、規約変更等の通知のため</li>
+      <li>本サービスの利用状況の分析およびサービス改善のため</li>
+      <li>当社または本サービスに関する案内、告知、機能紹介、アップデート情報、キャンペーンその他の情報提供のため</li>
+      <li>法令に基づく対応その他上記に付随する目的のため</li>
+    </ul>
+  </div>
+
+  <div class="pp-article">
+    <h3>第4条（利用目的の変更）</h3>
+    <p>当社は、前条の利用目的を、変更前と関連性を有すると合理的に認められる範囲で変更することがあります。</p>
+    <p>当社は、利用目的を変更した場合、変更後の利用目的を本サービス上または当社ウェブサイト上に表示する方法その他当社が適切と判断する方法により公表します。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第5条（第三者提供）</h3>
+    <p>当社は、次の場合を除き、取得した個人情報をあらかじめ本人の同意を得ることなく第三者に提供しません。</p>
+    <ul>
+      <li>法令に基づく場合</li>
+      <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難である場合</li>
+      <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難である場合</li>
+      <li>国の機関、地方公共団体またはその委託を受けた者が法令の定める事務を遂行するうえで協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合</li>
+      <li>その他、法令により認められる場合</li>
+    </ul>
+  </div>
+
+  <div class="pp-article">
+    <h3>第6条（委託）</h3>
+    <p>当社は、本サービスの運営に必要な範囲で、個人情報の取扱いの全部または一部を外部の事業者に委託することがあります。この場合、当社は、委託先を適切に選定し、必要かつ適切な監督を行います。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第7条（外部サービスとの連携）</h3>
+    <p>当社は、本サービスの提供にあたり、認証サービス、決済サービス、クラウドインフラその他の外部サービスを利用する場合があります。</p>
+    <p>ユーザーは、当該外部サービスの利用にあたり、当該外部サービス提供者の定める利用規約、プライバシーポリシーその他の条件が適用される場合があることをあらかじめ了承するものとします。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第8条（Cookie等の利用）</h3>
+    <p>当社は、本サービスの利便性向上、利用状況分析、セキュリティ維持その他本サービスの品質向上のため、Cookieその他これに類する技術を使用することがあります。</p>
+    <p>ユーザーは、ブラウザの設定によりCookieを無効化することができますが、その場合、本サービスの一部機能が利用できなくなることがあります。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第9条（安全管理措置）</h3>
+    <p>当社は、取得した情報について、漏えい、滅失、毀損、不正アクセスその他のリスクに対し、必要かつ適切な安全管理措置を講じます。また、当社は、従業者および委託先に対し、必要かつ適切な監督を行います。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第10条（保存期間および削除）</h3>
+    <p>当社は、取得した情報を、利用目的の達成に必要な範囲で保有します。</p>
+    <p>当社は、契約終了、退会、利用停止その他の事由により利用契約が終了した場合、当該終了日から30日経過後に、アカウント情報その他の情報を削除することがあります。</p>
+    <p>ただし、法令遵守、請求処理、不正利用防止その他本サービス運営上必要な範囲で、最小限の情報を保持することがあります。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第11条（開示、訂正、削除、利用停止等）</h3>
+    <p>当社は、本人から、当社が保有する個人情報について、利用目的の通知、開示、訂正、追加、削除、利用停止または第三者提供の停止等の請求があった場合、法令に従い、適切に対応します。これらの請求を行う場合は、<a href="/contact" style="color:var(--orange);text-decoration:none;">お問い合わせフォーム</a>よりご連絡ください。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第12条（未成年者）</h3>
+    <p>未成年者が本サービスを利用する場合は、必要に応じて法定代理人の同意を得たうえで利用するものとします。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第13条（本ポリシーの変更）</h3>
+    <p>当社は、法令の改正、本サービス内容の変更その他必要に応じて、本ポリシーを変更することがあります。変更後の本ポリシーは、当社ウェブサイトまたは本サービス上に掲載した時点または別途定めた効力発生日から効力を生じるものとします。</p>
+  </div>
+
+  <div class="pp-article">
+    <h3>第14条（お問い合わせ窓口）</h3>
+    <p>本ポリシーに関するお問い合わせ、開示等の請求その他個人情報の取扱いに関するご相談は、以下の窓口までご連絡ください。</p>
+    <div class="contact-box">
+      <div class="contact-row">
+        <span class="contact-label">会社名</span>
+        <span class="contact-val">株式会社おさまるカンパニー</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">住所</span>
+        <span class="contact-val">埼玉県児玉郡神川町原新田21-20</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">お問い合わせ</span>
+        <span class="contact-val"><a href="/contact" style="color:var(--orange);text-decoration:none;">お問い合わせフォーム</a>よりご連絡ください。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pp-footer">
+    <div class="pp-footer-label">附則</div>
+    <div class="pp-footer-date">本ポリシーは、<strong>2026年6月1日</strong>から施行します。</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft-logo">
+    <div class="ft-icon">T</div>
+    <div class="ft-brand">TRAKON</div>
+  </div>
+  <div class="ft-copy">Keep the ball moving.</div>
+  <div class="ft-links">
+    <a class="ft-link" href="/company">会社概要</a>
+    <a class="ft-link" href="/terms">利用規約</a>
+    <a class="ft-link" href="/privacy">プライバシーポリシー</a>
+    <a class="ft-link" href="/commerce">特定商取引法に基づく表記</a>
+    <a class="ft-link" href="/contact">お問い合わせ</a>
+  </div>
+  <div class="ft-copy">© 2026 株式会社おさまるカンパニー</div>
+</footer>
+
+</body>
+</html>
