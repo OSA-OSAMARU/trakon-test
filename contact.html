@@ -355,12 +355,13 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding
   </div>
   <div class="ft-copy">Keep the ball moving.</div>
   <div class="ft-links">
-  <a href="/company.html" class="ft-link">会社概要</a>
-  <a href="/terms.html" class="ft-link">利用規約</a>
-  <a href="/privacy.html" class="ft-link">プライバシー</a>
-  <a href="/commerce.html" class="ft-link">特定商取引法</a>
-  <a href="/contact.html" class="ft-link">お問い合わせ</a>
-</div>
+    <a class="ft-link" href="/">TOP</a>
+    <a class="ft-link" href="/company">会社概要</a>
+    <a class="ft-link" href="/terms">利用規約</a>
+    <a class="ft-link" href="/privacy">プライバシーポリシー</a>
+    <a class="ft-link" href="/commerce">特定商取引法に基づく表記</a>
+    <a class="ft-link" href="/contact">お問い合わせ</a>
+  </div>
   <div class="ft-copy">© 2026 株式会社おさまるカンパニー</div>
 </footer>
 
@@ -451,29 +452,40 @@ function validate() {
   return valid;
 }
 
-// 送信
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+// 送信（Formspree）
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   if (!validate()) {
-    // 最初のエラー項目にスクロール
     const firstError = document.querySelector('.form-input.error, .form-select.error, .form-textarea.error, .checkbox-wrap.error');
     if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
-  // 送信処理（バックエンド未接続の場合は完了画面を表示）
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = '送信中...';
 
-  // ※ 実際の送信処理はここに実装
-  // fetch('/api/contact', { method: 'POST', body: new FormData(this) })
-  //   .then(res => res.ok ? showComplete() : alert('送信に失敗しました。'))
-  //   .catch(() => alert('送信に失敗しました。'))
-  //   .finally(() => { btn.disabled = false; btn.textContent = '送信する'; });
+  try {
+    const res = await fetch('https://formspree.io/f/xbdqgvyw', {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
 
-  // デモ用：1秒後に完了画面
-  setTimeout(showComplete, 1000);
+    if (res.ok) {
+      showComplete();
+    } else {
+      const data = await res.json();
+      const msg = (data.errors && data.errors.map(e => e.message).join(', ')) || '送信に失敗しました。時間をおいて再度お試しください。';
+      alert(msg);
+      btn.disabled = false;
+      btn.textContent = '送信する';
+    }
+  } catch (err) {
+    alert('通信エラーが発生しました。時間をおいて再度お試しください。');
+    btn.disabled = false;
+    btn.textContent = '送信する';
+  }
 });
 
 function showComplete() {
