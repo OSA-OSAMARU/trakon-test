@@ -95,7 +95,7 @@ h1 em{font-style:normal;color:var(--orange);}
 }
 .hero-desc{
   font-size:15px;line-height:1.8;
-  color:var(--text-lt);
+  color:var(--text-mid);
   max-width:520px;margin:0 auto 52px;
 }
 .hero-ctas{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:18px;}
@@ -464,27 +464,84 @@ h2 em{font-style:normal;color:var(--orange);}
 }
 
 /* ── PRICING ── */
-.pr-header{text-align:center;margin-bottom:64px;}
-.pr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.pr-header{text-align:center;margin-bottom:40px;}
+/* トグル */
+.pr-toggle-wrap{display:flex;justify-content:center;margin-bottom:52px;}
+.pr-toggle{display:inline-flex;align-items:center;background:var(--bg-mid);border-radius:10px;padding:4px;}
+.pr-toggle-btn{
+  padding:9px 26px;border-radius:7px;border:none;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;transition:all .2s;color:var(--text-lt);background:transparent;
+}
+.pr-toggle-btn.act{background:white;color:var(--text);box-shadow:0 2px 8px rgba(26,30,46,.1);}
+.pr-toggle-save{
+  font-size:10px;font-weight:700;color:var(--green);
+  background:rgba(39,174,96,.1);padding:2px 8px;border-radius:4px;
+  font-family:'DM Mono',monospace;margin-left:8px;
+}
+/* グリッド */
+.pr-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
 .pr-card{
   background:white;border:1px solid var(--border);border-radius:14px;
-  padding:32px 26px;transition:all .25s;position:relative;overflow:hidden;
+  padding:26px 20px;transition:all .25s;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
 }
-.pr-card:hover{box-shadow:0 10px 40px rgba(26,30,46,.1);transform:translateY(-4px);}
-.pr-card.ft{border-color:var(--orange);box-shadow:0 10px 40px rgba(232,98,42,.14);}
+.pr-card:hover{box-shadow:0 8px 32px rgba(26,30,46,.1);transform:translateY(-3px);}
+.pr-card.ft{border-color:var(--orange);box-shadow:0 8px 28px rgba(232,98,42,.14);}
+/* Coming Soon */
+.pr-card.soon{opacity:.55;background:var(--bg);}
+.pr-card.soon:hover{transform:none;box-shadow:none;}
 .pr-popular{
-  position:absolute;top:16px;right:-30px;
+  position:absolute;top:14px;right:-28px;
   background:var(--orange);color:white;
-  font-size:10px;font-weight:700;padding:4px 40px;
+  font-size:9px;font-weight:700;padding:3px 36px;
   transform:rotate(45deg);
   font-family:'DM Mono',monospace;letter-spacing:1px;
 }
-.pr-tier{font-size:11px;font-weight:700;color:var(--text-lt);text-transform:uppercase;letter-spacing:1.5px;font-family:'DM Mono',monospace;margin-bottom:16px;}
-.pr-price{font-size:36px;font-weight:700;color:var(--text);line-height:1;margin-bottom:8px;}
-.pr-price sub{font-size:14px;font-weight:400;color:var(--text-lt);vertical-align:baseline;}
-.pr-desc{font-size:12px;color:var(--text-mid);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border);line-height:1.6;min-height:50px;}
-.pr-feat{font-size:13px;color:var(--text-mid);margin-bottom:9px;display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
-.pr-feat::before{content:'✓';color:var(--green);font-weight:700;font-size:12px;flex-shrink:0;margin-top:1px;}
+/* +3 Person Free バッジ */
+.pr-free-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;font-weight:700;color:var(--green);
+  background:rgba(39,174,96,.1);border:1px solid rgba(39,174,96,.2);
+  padding:3px 10px;border-radius:20px;
+  font-family:'DM Mono',monospace;margin-bottom:12px;
+}
+.pr-tier{font-size:11px;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:1.5px;font-family:'DM Mono',monospace;margin-bottom:10px;}
+/* 価格（月額/年額切り替え） */
+.pr-price-month{font-size:30px;font-weight:700;color:var(--text);line-height:1;margin-bottom:3px;}
+.pr-price-month sub{font-size:12px;font-weight:400;color:var(--text-lt);vertical-align:baseline;}
+.pr-price-year{display:none;font-size:30px;font-weight:700;color:var(--text);line-height:1;margin-bottom:3px;}
+.pr-price-year sub{font-size:12px;font-weight:400;color:var(--text-lt);vertical-align:baseline;}
+.pr-save{font-size:10px;color:var(--green);font-weight:600;min-height:16px;font-family:'DM Mono',monospace;margin-bottom:8px;}
+/* 年額表示時に月額を非表示・年額を表示 */
+/* デフォルトで年額非表示 */
+.pr-price-year{display:none;}
+/* 年額トグル時 */
+.show-annual .pr-price-month{display:none;}
+.show-annual .pr-price-year{display:block;}
+.pr-desc{font-size:12px;color:var(--text);margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);line-height:1.6;min-height:40px;}
+.pr-specs{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.pr-spec{font-size:12px;color:var(--text-mid);display:flex;align-items:center;gap:5px;}
+.pr-feats{flex:1;}
+.pr-feat{font-size:12px;color:var(--text-mid);margin-bottom:7px;display:flex;align-items:flex-start;gap:6px;line-height:1.4;}
+.pr-feat::before{content:'✓';color:var(--green);font-weight:700;font-size:11px;flex-shrink:0;margin-top:1px;}
+/* CTAボタン */
+.pr-cta{margin-top:auto;padding-top:16px;}
+.pr-btn-free{
+  display:block;width:100%;padding:11px;
+  background:var(--orange);color:white;border:none;border-radius:9px;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;text-decoration:none;text-align:center;transition:all .2s;
+}
+.pr-btn-free:hover{background:var(--orange-lt);transform:translateY(-1px);box-shadow:0 6px 18px rgba(232,98,42,.3);}
+.pr-btn-soon{
+  display:block;width:100%;padding:11px;
+  background:var(--bg-mid);color:var(--text-lt);border:none;border-radius:9px;
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:700;
+  cursor:not-allowed;text-align:center;letter-spacing:1px;
+}
+.pr-add-user{text-align:center;margin-top:20px;font-size:11px;color:var(--text-lt);}
+.pr-add-user strong{color:var(--text-mid);}
 
 /* ── FINAL ── */
 .final-bg{background:var(--navy);padding:var(--section-pad);text-align:center;}
@@ -528,6 +585,38 @@ footer{
 .fade.d5{transition-delay:.5s;}
 
 /* ── RESPONSIVE ── */
+
+/* ── FLOW 横並び ── */
+.flow-h{
+  display:flex;align-items:center;gap:0;
+  background:white;border:1px solid var(--border);border-radius:16px;
+  padding:32px 24px;
+  box-shadow:0 4px 20px rgba(26,30,46,.07);
+}
+.flow-h-node{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  flex:1;text-align:center;padding:0 8px;
+}
+.flow-h-node .fn-role{
+  font-size:10px;color:var(--text-lt);
+  font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;
+}
+.flow-h-node .fn-name{
+  font-size:15px;font-weight:700;color:var(--text);
+}
+.flow-h-arr{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  flex-shrink:0;padding:0 4px;
+}
+.fha-line{width:1px;height:20px;background:var(--border);}
+.fha-icon{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--orange);color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;
+  box-shadow:0 3px 10px rgba(232,98,42,.35);
+  flex-shrink:0;
+}
 @media(max-width:900px){
   :root{--section-pad:80px 28px;}
   nav{padding:0 28px;}
@@ -549,7 +638,7 @@ footer{
     <div class="nav-icon">T</div>
     <div>
       <div class="nav-brand">TRAKON</div>
-      <div class="nav-sub">Track the ball. Control the flow.</div>
+      <div class="nav-sub">Keep the ball moving.</div>
     </div>
   </a>
   <div class="nav-links">
@@ -573,12 +662,11 @@ footer{
     それだけで、すべてが変わる。
   </p>
   <p class="hero-desc fade d2">
-    TRAKONは、やり取りの流れを「ボール」として可視化する進行管理ツール。<br>
+    TRAKONは、やり取りの流れを「ボール」として可視化する<br>進行管理ツールです。<br>
     提出・確認・戻し。その流れを、止めないために。
   </p>
   <div class="hero-ctas fade d3">
     <a class="btn-pry" href="#">無料で始める</a>
-    <a class="btn-ghost" href="#">デモを見る →</a>
   </div>
   <p class="hero-note fade d3">クレジットカード不要 · 1プロジェクト無料</p>
 
@@ -732,37 +820,41 @@ footer{
         </div>
       </div>
 
-      <!-- flow diagram -->
-      <div class="flow fade d2">
-        <div class="flow-node">
-          <div><div class="fn-role">Client</div><div class="fn-name">◯◯株式会社 田中様</div></div>
+      <!-- flow diagram（横並び） -->
+      <div class="flow-h fade d2">
+        <div class="flow-h-node">
+          <div class="fn-role">Client</div>
+          <div class="fn-name">田中様</div>
           <span class="fn-badge fnb-cl">確認</span>
         </div>
-        <div class="flow-conn">
-          <div class="fc-line"></div>
-          <div class="fc-ball">⚽</div>
-          <div class="fc-line"></div>
+        <div class="flow-h-arr">
+          <div class="fha-line"></div>
+          <div class="fha-icon">→</div>
+          <div class="fha-line"></div>
         </div>
-        <div class="flow-node">
-          <div><div class="fn-role">Director</div><div class="fn-name">あけぼの制作 佐藤</div></div>
+        <div class="flow-h-node">
+          <div class="fn-role">Director</div>
+          <div class="fn-name">佐藤</div>
           <span class="fn-badge fnb-dr">進行中</span>
         </div>
-        <div class="flow-conn">
-          <div class="fc-line"></div>
-          <div class="fc-ball">⚽</div>
-          <div class="fc-line"></div>
+        <div class="flow-h-arr">
+          <div class="fha-line"></div>
+          <div class="fha-icon">→</div>
+          <div class="fha-line"></div>
         </div>
-        <div class="flow-node">
-          <div><div class="fn-role">Designer</div><div class="fn-name">あけぼの制作 小林</div></div>
+        <div class="flow-h-node">
+          <div class="fn-role">Designer</div>
+          <div class="fn-name">小林</div>
           <span class="fn-badge fnb-ds">デザイン</span>
         </div>
-        <div class="flow-conn">
-          <div class="fc-line"></div>
-          <div class="fc-ball">⚽</div>
-          <div class="fc-line"></div>
+        <div class="flow-h-arr">
+          <div class="fha-line"></div>
+          <div class="fha-icon">→</div>
+          <div class="fha-line"></div>
         </div>
-        <div class="flow-node">
-          <div><div class="fn-role">Engineer</div><div class="fn-name">あけぼの制作 中村</div></div>
+        <div class="flow-h-node">
+          <div class="fn-role">Engineer</div>
+          <div class="fn-name">中村</div>
           <span class="fn-badge fnb-en">待機中</span>
         </div>
       </div>
@@ -1088,43 +1180,128 @@ footer{
       <h2 style="text-align:center;" class="fade d1">さあ、<em>始めよう。</em></h2>
       <p class="lead center fade d2">まずは、ひとつのプロジェクトから。</p>
     </div>
-    <div class="pr-grid">
-      <div class="pr-card fade d1">
-        <div class="pr-tier">Free</div>
-        <div class="pr-price">¥0</div>
-        <div class="pr-desc">個人・お試し用。まずは試してみたい方へ。</div>
-        <div class="pr-feat">1プロジェクトまで</div>
-        <div class="pr-feat">メンバー3名まで</div>
-        <div class="pr-feat">基本機能すべて</div>
-      </div>
-      <div class="pr-card fade d2">
-        <div class="pr-tier">Starter</div>
-        <div class="pr-price">¥980<sub> /月</sub></div>
-        <div class="pr-desc">個人ディレクターや小さなチームに。</div>
-        <div class="pr-feat">無制限プロジェクト</div>
-        <div class="pr-feat">クライアントポータル</div>
-        <div class="pr-feat">メール通知</div>
-      </div>
-      <div class="pr-card ft fade d3">
-        <div class="pr-popular">人気</div>
-        <div class="pr-tier">Team</div>
-        <div class="pr-price">¥5,000<sub> /月</sub></div>
-        <div class="pr-desc">小規模制作会社・チーム向け。</div>
-        <div class="pr-feat">メンバー20名まで</div>
-        <div class="pr-feat">WAITダッシュボード</div>
-        <div class="pr-feat">プロジェクト横断ビュー</div>
-        <div class="pr-feat">停滞アラート</div>
-      </div>
-      <div class="pr-card fade d4">
-        <div class="pr-tier">Agency</div>
-        <div class="pr-price">¥20,000<sub> /月</sub></div>
-        <div class="pr-desc">20名以上の制作会社・エージェンシーに。</div>
-        <div class="pr-feat">メンバー無制限</div>
-        <div class="pr-feat">カスタム権限設定</div>
-        <div class="pr-feat">専任サポート</div>
-        <div class="pr-feat">API連携</div>
+
+    <!-- 月額/年額トグル -->
+    <div class="pr-toggle-wrap fade d2">
+      <div class="pr-toggle">
+        <button class="pr-toggle-btn act" id="btn-monthly" onclick="setPricing('monthly')">月額</button>
+        <button class="pr-toggle-btn" id="btn-annual" onclick="setPricing('annual')">
+          年額<span class="pr-toggle-save">2ヶ月分お得</span>
+        </button>
       </div>
     </div>
+
+    <div class="pr-grid" id="pr-grid">
+
+      <!-- ① Free ── アクティブ -->
+      <div class="pr-card ft fade d1">
+        <div class="pr-tier">Free</div>
+        <div class="pr-price-month">¥0</div>
+        <div class="pr-price-year">¥0</div>
+        <div class="pr-save">&nbsp;</div>
+        <div class="pr-desc">個人・お試し用。<br>まずは触ってみたい方へ。</div>
+        <div class="pr-specs">
+          <div class="pr-spec">◈ プロジェクト 2件まで</div>
+          <div class="pr-spec">◈ 1ユーザー</div>
+        </div>
+        <div class="pr-feats">
+          <div class="pr-feat">ボール管理（基本）</div>
+          <div class="pr-feat">縦スケジュール表示</div>
+          <div class="pr-feat">基本機能すべて</div>
+        </div>
+        <div class="pr-cta">
+          <a class="pr-btn-free" href="#">無料で始める</a>
+        </div>
+      </div>
+
+      <!-- ② Personal ── Coming Soon -->
+      <div class="pr-card soon fade d2">
+        <div class="pr-tier">Personal</div>
+        <div class="pr-price-month">¥980<sub> /月</sub></div>
+        <div class="pr-price-year">¥9,800<sub> /年</sub></div>
+        <div class="pr-save" id="save-personal">&nbsp;</div>
+        <div class="pr-desc">フリーランスディレクターに。<br>個人の財布で使えるプロ仕様。</div>
+        <div class="pr-specs">
+          <div class="pr-spec">◈ プロジェクト 10件まで</div>
+          <div class="pr-spec">◈ 1ユーザー</div>
+        </div>
+        <div class="pr-feats">
+          <div class="pr-feat">ボール管理・TOSS機能</div>
+          <div class="pr-feat">停滞アラート</div>
+          <div class="pr-feat">メール通知</div>
+        </div>
+        <div class="pr-cta">
+          <button class="pr-btn-soon" disabled>COMING SOON</button>
+        </div>
+      </div>
+
+      <!-- ③ Team Small ── Coming Soon -->
+      <div class="pr-card soon fade d3">
+        <div class="pr-tier">Team Small</div>
+        <div class="pr-price-month">¥9,800<sub> /月</sub></div>
+        <div class="pr-price-year">¥98,000<sub> /年</sub></div>
+        <div class="pr-save" id="save-small">&nbsp;</div>
+        <div class="pr-desc">小規模制作会社・チームに。<br>法人導入の最初の一歩。</div>
+        <div class="pr-specs">
+          <div class="pr-spec">◈ プロジェクト無制限</div>
+          <div class="pr-spec">◈ 5ユーザーまで</div>
+        </div>
+        <div class="pr-feats">
+          <div class="pr-feat">プロジェクト横断ビュー</div>
+          <div class="pr-feat">WAITダッシュボード</div>
+          <div class="pr-feat">停滞アラート</div>
+        </div>
+        <div class="pr-cta">
+          <button class="pr-btn-soon" disabled>COMING SOON</button>
+        </div>
+      </div>
+
+      <!-- ④ Team Standard ── Coming Soon -->
+      <div class="pr-card soon fade d4">
+        <div class="pr-free-badge">+3 Person Free!</div>
+        <div class="pr-tier">Team Standard</div>
+        <div class="pr-price-month">¥27,800<sub> /月</sub></div>
+        <div class="pr-price-year">¥278,000<sub> /年</sub></div>
+        <div class="pr-save" id="save-standard">&nbsp;</div>
+        <div class="pr-desc">制作会社の本格導入に。<br>チームが広がっても追いつく。</div>
+        <div class="pr-specs">
+          <div class="pr-spec">◈ プロジェクト無制限</div>
+          <div class="pr-spec">◈ 20ユーザーまで</div>
+        </div>
+        <div class="pr-feats">
+          <div class="pr-feat">Team Smallの全機能</div>
+          <div class="pr-feat">優先サポート</div>
+          <div class="pr-feat" style="font-size:10px;color:var(--text-lt);">追加で揃えるより3人分お得</div>
+        </div>
+        <div class="pr-cta">
+          <button class="pr-btn-soon" disabled>COMING SOON</button>
+        </div>
+      </div>
+
+      <!-- ⑤ Team Pro ── Coming Soon -->
+      <div class="pr-card soon fade d5">
+        <div class="pr-free-badge">+3 Person Free!</div>
+        <div class="pr-tier">Team Pro</div>
+        <div class="pr-price-month">¥68,300<sub> /月</sub></div>
+        <div class="pr-price-year">¥683,000<sub> /年</sub></div>
+        <div class="pr-save" id="save-pro">&nbsp;</div>
+        <div class="pr-desc">代理店・大企業向け。<br>組織全体で使い切る規模感。</div>
+        <div class="pr-specs">
+          <div class="pr-spec">◈ プロジェクト無制限</div>
+          <div class="pr-spec">◈ 50ユーザーまで</div>
+        </div>
+        <div class="pr-feats">
+          <div class="pr-feat">Team Standardの全機能</div>
+          <div class="pr-feat">専任サポート</div>
+          <div class="pr-feat" style="font-size:10px;color:var(--text-lt);">追加で揃えるより3人分お得</div>
+        </div>
+        <div class="pr-cta">
+          <button class="pr-btn-soon" disabled>COMING SOON</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="pr-add-user fade">※ 追加ユーザー <strong>¥1,500/人/月</strong></div>
   </div>
 </section>
 
@@ -1157,21 +1334,55 @@ footer{
   </div>
   <div class="ft-copy">Keep the ball moving.</div>
   <div class="ft-links">
-  <a href="/company.html" class="ft-link">会社概要</a>
-  <a href="/terms.html" class="ft-link">利用規約</a>
-  <a href="/privacy.html" class="ft-link">プライバシー</a>
-  <a href="/commerce.html" class="ft-link">特定商取引法</a>
-  <a href="/contact.html" class="ft-link">お問い合わせ</a>
-</div>
+    <a class="ft-link" href="/company">会社概要</a>
+    <a class="ft-link" href="/terms">利用規約</a>
+    <a class="ft-link" href="/privacy">プライバシーポリシー</a>
+    <a class="ft-link" href="/commerce">特定商取引法に基づく表記</a>
+    <a class="ft-link" href="/contact">お問い合わせ</a>
+  </div>
   <div class="ft-copy">© 2026 株式会社おさまるカンパニー</div>
 </footer>
 
 
 <script>
+// スクロールフェードイン
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+// 月額/年額トグル
+const savings = {
+  personal: { month: '2ヶ月分（¥1,960）お得', annual: '' },
+  small:    { month: '2ヶ月分（¥19,600）お得', annual: '' },
+  standard: { month: '2ヶ月分（¥55,600）お得', annual: '' },
+  pro:      { month: '2ヶ月分（¥136,600）お得', annual: '' }
+};
+
+function setPricing(mode) {
+  const grid = document.getElementById('pr-grid');
+  const btnM = document.getElementById('btn-monthly');
+  const btnA = document.getElementById('btn-annual');
+
+  if (mode === 'annual') {
+    grid.classList.add('show-annual');
+    btnA.classList.add('act');
+    btnM.classList.remove('act');
+    // 年額時のお得表示
+    document.getElementById('save-personal').textContent = '2ヶ月分（¥1,960）お得';
+    document.getElementById('save-small').textContent    = '2ヶ月分（¥19,600）お得';
+    document.getElementById('save-standard').textContent = '2ヶ月分（¥55,600）お得';
+    document.getElementById('save-pro').textContent      = '2ヶ月分（¥136,600）お得';
+  } else {
+    grid.classList.remove('show-annual');
+    btnM.classList.add('act');
+    btnA.classList.remove('act');
+    // 月額時はお得表示を消す
+    ['save-personal','save-small','save-standard','save-pro'].forEach(id => {
+      document.getElementById(id).innerHTML = '&nbsp;';
+    });
+  }
+}
 </script>
 </body>
 </html>
