@@ -61,7 +61,7 @@ function HeroSection() {
             無料で始める　→
           </a>
         </div>
-        <div className="relative w-full rounded-[20px] overflow-hidden border border-[#e5e0d8]">
+        <div className="relative w-full max-w-[960px] mx-auto rounded-[20px] overflow-hidden border border-[#e5e0d8]">
           <img
             alt="TRAKONプロダクト画面"
             src={imgHero}
