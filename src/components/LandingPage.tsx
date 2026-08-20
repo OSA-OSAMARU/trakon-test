@@ -447,11 +447,11 @@ function Footer() {
           TRAKON
         </p>
         <div className={`${notoR} text-[#4f4e49] text-sm sm:text-base leading-[28.8px] flex flex-wrap gap-x-6 gap-y-2`}>
-          <a href="https://www.trakon.app/company" target="_blank" rel="noopener noreferrer" className="hover:text-[#20201e] transition-colors">会社概要</a>
-          <a href="https://www.trakon.app/terms.html" target="_blank" rel="noopener noreferrer" className="hover:text-[#20201e] transition-colors">利用規約</a>
-          <a href="https://www.trakon.app/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-[#20201e] transition-colors">プライバシーポリシー</a>
-          <a href="https://www.trakon.app/commerce.html" target="_blank" rel="noopener noreferrer" className="hover:text-[#20201e] transition-colors">特定商取引法に基づく表記</a>
-          <a href="https://www.trakon.app/contact.html" target="_blank" rel="noopener noreferrer" className="hover:text-[#20201e] transition-colors">お問い合わせ</a>
+          <a href="/company" className="hover:text-[#20201e] transition-colors">会社概要</a>
+          <a href="/terms" className="hover:text-[#20201e] transition-colors">利用規約</a>
+          <a href="/privacy" className="hover:text-[#20201e] transition-colors">プライバシーポリシー</a>
+          <a href="/commerce" className="hover:text-[#20201e] transition-colors">特定商取引法に基づく表記</a>
+          <a href="/contact" className="hover:text-[#20201e] transition-colors">お問い合わせ</a>
         </div>
       </div>
     </footer>
