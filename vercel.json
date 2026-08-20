@@ -1,9 +1,14 @@
 {
   "rewrites": [
-    { "source": "/terms",   "destination": "/terms.html" },
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/company", "destination": "/company.html" },
-    { "source": "/commerce","destination": "/commerce.html" },
-    { "source": "/contact", "destination": "/contact.html" }
+    { "source": "/terms", "destination": "/index.html" },
+    { "source": "/privacy", "destination": "/index.html" },
+    { "source": "/company", "destination": "/index.html" },
+    { "source": "/commerce", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/terms.html", "destination": "/index.html" },
+    { "source": "/privacy.html", "destination": "/index.html" },
+    { "source": "/company.html", "destination": "/index.html" },
+    { "source": "/commerce.html", "destination": "/index.html" },
+    { "source": "/contact.html", "destination": "/index.html" }
   ]
 }
