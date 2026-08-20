@@ -1,0 +1,12 @@
+{
+  "title": "TRAKON",
+  "description": "TRAKON（トラコン）はWEB（サイト）制作やプロジェクトの進行において、スケジュールなどからボールの受け渡しを可視化する進行管理ツールです。",
+  "language": "ja",
+  "robots": {
+    "index": true
+  },
+  "accessibility": {
+    "addBypassLinks": true,
+    "ignoreReducedMotion": false
+  }
+}
