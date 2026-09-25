@@ -1,3 +1,4 @@
+import SiteHeader from "@/components/SiteHeader";
 import imgHero from "@/imports/LpDesktop1440/dd414436588d195907a288977aea58f593ea7dfc.png";
 import imgSignal1 from "@/imports/LpDesktop1440/7192b6cbf8c89183b39c830444f618a6a64a6243.png";
 import imgSignal2 from "@/imports/LpDesktop1440/9303b4d2a82795864b5ac22ee4b1b639da2d2b58.png";
@@ -22,27 +23,10 @@ const notoM = "font-['Noto_Sans_JP',sans-serif] font-medium";
 
 const container = "w-full max-w-[1080px] mx-auto px-5 sm:px-8";
 
-function Header() {
-  return (
-    <header className={`flex h-16 items-center justify-between ${container}`}>
-      <p className={`${sora} text-[#1a1a18] text-3xl sm:text-4xl lg:text-[48px] tracking-[2.4px] leading-[1.1]`}>
-        TRAKON
-      </p>
-      <a
-        href="https://app.trakon.app/login" target="_blank" rel="noopener noreferrer"
-        className={`${notoB} bg-[#e8642a] text-white text-base sm:text-lg lg:text-[20px] tracking-[0.8px] leading-[1] px-6 py-2.5 rounded-[7px] whitespace-nowrap hover:opacity-90 transition-opacity`}
-      >
-        ログイン　→
-      </a>
-    </header>
-  );
-}
-
 function HeroSection() {
   return (
     <section className="bg-[#faf8f4] w-full">
-      <div className={`flex flex-col gap-12 md:gap-16 lg:gap-[72px] items-center pb-12 md:pb-16 lg:pb-[110px] pt-10 ${container}`}>
-        <Header />
+      <div className={`flex flex-col gap-12 md:gap-16 lg:gap-[72px] items-center pb-12 md:pb-16 lg:pb-[110px] pt-12 md:pt-16 lg:pt-[88px] ${container}`}>
         <div className="flex flex-col gap-8 items-center text-center w-full">
           <h1 className={`${notoB} text-[#20201e] text-3xl sm:text-4xl md:text-5xl lg:text-[56px] tracking-[-0.84px] leading-[1.18]`}>
             タスクが見えているだけでは、
@@ -82,7 +66,7 @@ function ProblemSection() {
   ];
 
   return (
-    <section className="bg-[#f3efe8] w-full">
+    <section id="problem" className="bg-[#f3efe8] w-full scroll-mt-[72px]">
       <div className={`flex flex-col gap-10 md:gap-14 lg:gap-[64px] ${container} py-16 md:py-20 lg:py-[110px]`}>
         <h2 className={`${notoB} text-[#20201e] text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-0.44px] leading-[1.25] max-w-[580px]`}>
           受け渡しが止まれば、
@@ -286,7 +270,7 @@ const features = [
 
 function FeaturesSection() {
   return (
-    <section className="bg-[#faf8f4] w-full">
+    <section id="features" className="bg-[#faf8f4] w-full scroll-mt-[72px]">
       <div className={`flex flex-col gap-8 md:gap-10 ${container} py-16 md:py-20 lg:py-[110px]`}>
         <h2 className={`${notoB} text-[#22211f] text-2xl sm:text-3xl md:text-4xl lg:text-[48px] leading-normal`}>
           TRAKONでできること
@@ -363,7 +347,7 @@ function PricingSection() {
   ];
 
   return (
-    <section className="bg-[#f3efe8] w-full">
+    <section id="pricing" className="bg-[#f3efe8] w-full scroll-mt-[72px]">
       <div className={`flex flex-col gap-10 md:gap-14 lg:gap-[64px] ${container} py-16 md:py-20 lg:py-[110px]`}>
         <h2 className={`${notoB} text-[#20201e] text-3xl sm:text-4xl md:text-5xl lg:text-[56px] tracking-[-0.84px] leading-[1.18]`}>
           さあ、始めよう。
@@ -461,6 +445,7 @@ function Footer() {
 export default function LandingPage() {
   return (
     <div className="bg-[#faf8f4] flex flex-col items-center w-full">
+      <SiteHeader />
       <HeroSection />
       <ProblemSection />
       <WhoHasBallSection />
