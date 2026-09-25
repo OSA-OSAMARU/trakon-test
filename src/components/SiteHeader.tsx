@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const APP_LOGIN = "https://app.trakon.app/login";
 
 const nav = [
-  ["課題", "/#problem"],
+  ["概要", "/#problem"],
   ["機能", "/#features"],
   ["料金", "/#pricing"],
 ] as const;
