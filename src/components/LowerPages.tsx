@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import SiteHeader from "@/components/SiteHeader";
 
 type LegalSection = { title: string; body: string };
 
@@ -9,20 +10,6 @@ const navigation = [
   ["プライバシーポリシー", "/privacy"],
   ["お問い合わせ", "/contact"],
 ] as const;
-
-function SiteHeader() {
-  return (
-    <header className="lower-header">
-      <div className="lower-shell lower-header-inner">
-        <a className="lower-logo" href="/">TRAKON</a>
-        <div className="lower-header-actions">
-          <a className="lower-back" href="/">TRAKONへ戻る</a>
-          <a className="lower-cta" href="https://app.trakon.app/login">無料で始める <span>→</span></a>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 function SiteFooter() {
   return (
