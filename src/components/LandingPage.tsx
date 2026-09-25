@@ -23,6 +23,8 @@ const notoM = "font-['Noto_Sans_JP',sans-serif] font-medium";
 
 const container = "w-full max-w-[1080px] mx-auto px-5 sm:px-8";
 
+const APP_LOGIN = "https://app.trakon.app/login";
+
 function HeroSection() {
   return (
     <section className="bg-[#faf8f4] w-full">
@@ -305,6 +307,7 @@ function PricingSection() {
       unit: "/月",
       limits: ["1アカウント", "2プロジェクトまで", "基本機能すべて"],
       ctaLabel: "無料で始める  →",
+      ctaHref: APP_LOGIN,
       ctaStyle: "bg-[#e8642a] text-white hover:opacity-90",
       highlight: true,
     },
@@ -316,8 +319,9 @@ function PricingSection() {
       price: "¥980",
       unit: "/月",
       limits: ["1アカウント", "10プロジェクトまで", "基本機能すべて"],
-      ctaLabel: "COMING SOON",
-      ctaStyle: "bg-white text-[#20201e] border border-[#e7e1d8] cursor-not-allowed",
+      ctaLabel: "無料で始める  →",
+      ctaHref: APP_LOGIN,
+      ctaStyle: "bg-white text-[#20201e] border border-[#e7e1d8] hover:border-[#20201e]",
       highlight: false,
     },
     {
@@ -328,8 +332,9 @@ function PricingSection() {
       price: "¥9,800",
       unit: "/月",
       limits: ["5アカウント", "プロジェクト無制限", "基本機能すべて"],
-      ctaLabel: "COMING SOON",
-      ctaStyle: "bg-white text-[#20201e] border border-[#e7e1d8] cursor-not-allowed",
+      ctaLabel: "無料で始める  →",
+      ctaHref: APP_LOGIN,
+      ctaStyle: "bg-white text-[#20201e] border border-[#e7e1d8] hover:border-[#20201e]",
       highlight: false,
     },
     {
@@ -340,8 +345,9 @@ function PricingSection() {
       price: "お問い合わせ",
       unit: null,
       limits: ["アカウント数は個別設計", "プロジェクト無制限", "権限に応じた作成・編集"],
-      ctaLabel: "COMING SOON",
-      ctaStyle: "bg-white text-[#20201e] border border-[#e7e1d8] cursor-not-allowed",
+      ctaLabel: "問い合わせる  →",
+      ctaHref: "/contact",
+      ctaStyle: "bg-white text-[#20201e] border border-[#e7e1d8] hover:border-[#20201e]",
       highlight: false,
     },
   ];
@@ -392,9 +398,12 @@ function PricingSection() {
                   <p key={l} className={`${notoR} text-[#20201e] text-sm leading-[22px]`}>✓　{l}</p>
                 ))}
               </div>
-              <button className={`${notoM} w-full h-12 rounded-[8px] text-sm leading-[20px] transition-opacity ${plan.ctaStyle}`}>
+              <a
+                href={plan.ctaHref}
+                className={`${notoM} w-full h-12 rounded-[8px] text-sm leading-[20px] flex items-center justify-center whitespace-pre transition-[opacity,border-color] ${plan.ctaStyle}`}
+              >
                 {plan.ctaLabel}
-              </button>
+              </a>
             </div>
           ))}
         </div>
