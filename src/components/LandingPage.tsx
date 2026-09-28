@@ -267,7 +267,7 @@ const features = [
   { img: imgFeature5, title: "横断ダッシュボード", desc: "複数案件の状態と要対応をひとつの場所で確認。" },
   { img: imgFeature6, title: "期限超過アラート", desc: "期限を過ぎたカードをリングと日数で表示。" },
   { img: imgFeature7, title: "役割と権限", desc: "実施者・承認者・進行責任者の操作を明確化。" },
-  { img: imgFeature8, title: "アカウント不要の共有URL", desc: "URLを送るだけで、クライアントも確認・承認。" },
+  { img: imgFeature8, title: "閲覧用の共有URL", desc: "URLを送るだけで、クライアントもスケジュールを確認。" },
 ];
 
 function FeaturesSection() {
