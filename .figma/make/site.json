@@ -8,5 +8,8 @@
   "accessibility": {
     "addBypassLinks": true,
     "ignoreReducedMotion": false
+  },
+  "icons": {
+    "icon": "/favicon.svg"
   }
 }
