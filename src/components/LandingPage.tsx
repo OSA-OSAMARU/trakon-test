@@ -296,8 +296,30 @@ function FeaturesSection() {
   );
 }
 
+const roles = [
+  { name: "閲覧者", desc: "プロジェクトの閲覧、コメント、タスク完了（承認・差し戻し）ができる" },
+  { name: "編集者", desc: "閲覧者の操作に加え、スケジュールの追加・変更・削除ができる" },
+  {
+    name: "管理者",
+    desc: "編集者の操作に加え、TOSS、メンバーの招待・削除、制作物の追加・削除、プロジェクトの追加・削除、アーカイブができる",
+  },
+  { name: "非会員", desc: "共有URLから閲覧のみできる。コメント、承認・差し戻しはできない" },
+];
+
 function PricingSection() {
-  const plans = [
+  const plans: {
+    name: string;
+    nameFont: string;
+    badge: string | null;
+    desc: string;
+    price: string;
+    unit: string | null;
+    terms: [string, string][];
+    ctaLabel: string;
+    ctaHref: string;
+    ctaStyle: string;
+    highlight: boolean;
+  }[] = [
     {
       name: "Free",
       nameFont: sora,
@@ -305,7 +327,12 @@ function PricingSection() {
       desc: "まず試してみたい方へ",
       price: "¥0",
       unit: "/月",
-      limits: ["1アカウント", "2プロジェクトまで", "基本機能すべて"],
+      terms: [
+        ["契約アカウント", "1"],
+        ["招待できる会員", "5人まで"],
+        ["招待時の権限", "閲覧者"],
+        ["プロジェクト", "2まで"],
+      ],
       ctaLabel: "無料で始める  →",
       ctaHref: APP_LOGIN,
       ctaStyle: "bg-[#e8642a] text-white hover:opacity-90",
@@ -318,7 +345,12 @@ function PricingSection() {
       desc: "個人で案件を動かす方へ",
       price: "¥980",
       unit: "/月",
-      limits: ["1アカウント", "10プロジェクトまで", "基本機能すべて"],
+      terms: [
+        ["契約アカウント", "1"],
+        ["招待できる会員", "10人まで"],
+        ["招待時の権限", "閲覧者・編集者・管理者"],
+        ["プロジェクト", "10まで"],
+      ],
       ctaLabel: "無料で始める  →",
       ctaHref: APP_LOGIN,
       ctaStyle: "bg-white text-[#20201e] border border-[#e7e1d8] hover:border-[#20201e]",
@@ -331,7 +363,12 @@ function PricingSection() {
       desc: "制作チームの進行管理へ",
       price: "¥9,800",
       unit: "/月",
-      limits: ["5アカウント", "プロジェクト無制限", "基本機能すべて"],
+      terms: [
+        ["契約アカウント", "5"],
+        ["招待できる会員", "無制限"],
+        ["招待時の権限", "閲覧者・編集者・管理者"],
+        ["プロジェクト", "無制限"],
+      ],
       ctaLabel: "無料で始める  →",
       ctaHref: APP_LOGIN,
       ctaStyle: "bg-white text-[#20201e] border border-[#e7e1d8] hover:border-[#20201e]",
@@ -344,7 +381,12 @@ function PricingSection() {
       desc: "組織に合わせて個別設計",
       price: "お問い合わせ",
       unit: null,
-      limits: ["アカウント数は個別設計", "プロジェクト無制限", "権限に応じた作成・編集"],
+      terms: [
+        ["契約アカウント", "個別設計"],
+        ["招待できる会員", "個別設計"],
+        ["招待時の権限", "個別設計"],
+        ["プロジェクト", "無制限"],
+      ],
       ctaLabel: "問い合わせる  →",
       ctaHref: "/contact",
       ctaStyle: "bg-white text-[#20201e] border border-[#e7e1d8] hover:border-[#20201e]",
@@ -364,7 +406,7 @@ function PricingSection() {
         <div className="bg-[#fdf3ee] border border-[#e8642a] rounded-[12px] flex flex-wrap gap-4 items-center px-6 py-4">
           <p className={`${notoM} text-[#e8642a] text-[13px] leading-[20px]`}>全プラン共通</p>
           <p className={`${notoR} text-[#20201e] text-[13px] sm:text-[14px] leading-[22px]`}>
-            プロジェクト作成・編集　／　非会員へのプロジェクト共有　／　非会員への確認依頼と差戻し
+            共有URLでスケジュールを共有できます。非会員は閲覧のみ。承認・差し戻しには会員登録と招待が必要です
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -393,11 +435,14 @@ function PricingSection() {
                 )}
               </div>
               <div className="bg-[#e7e1d8] h-px w-full" />
-              <div className="flex flex-col gap-3 flex-1">
-                {plan.limits.map((l) => (
-                  <p key={l} className={`${notoR} text-[#20201e] text-sm leading-[22px]`}>✓　{l}</p>
+              <dl className="flex flex-col gap-3 flex-1">
+                {plan.terms.map(([label, value]) => (
+                  <div key={label} className="flex flex-col gap-0.5">
+                    <dt className={`${notoR} text-[#8a847b] text-xs leading-[18px]`}>{label}</dt>
+                    <dd className={`${notoM} text-[#20201e] text-sm leading-[22px]`}>{value}</dd>
+                  </div>
                 ))}
-              </div>
+              </dl>
               <a
                 href={plan.ctaHref}
                 className={`${notoM} w-full h-12 rounded-[8px] text-sm leading-[20px] flex items-center justify-center whitespace-pre transition-[opacity,border-color] ${plan.ctaStyle}`}
@@ -406,6 +451,20 @@ function PricingSection() {
               </a>
             </div>
           ))}
+        </div>
+        <div className="flex flex-col gap-5">
+          <p className={`${notoB} text-[#20201e] text-base leading-normal`}>権限について</p>
+          <dl className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            {roles.map((r) => (
+              <div key={r.name} className="border-t border-[#d9d2c7] pt-4 flex flex-col gap-2">
+                <dt className={`${notoM} text-[#20201e] text-sm leading-[22px]`}>{r.name}</dt>
+                <dd className={`${notoR} text-[#4f4e49] text-[13px] leading-[22px]`}>{r.desc}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className={`${notoR} text-[#4f4e49] text-[13px] leading-[22px]`}>
+            承認時にはコメントを添えられます。承認・差し戻しはタスクを完了する操作です。タスク完了後、次の工程へTOSSできるのは進行管理者を務める管理者のみです。
+          </p>
         </div>
       </div>
     </section>
