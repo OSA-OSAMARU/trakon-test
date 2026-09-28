@@ -323,7 +323,7 @@ function PricingSection() {
     {
       name: "Free",
       nameFont: sora,
-      badge: "Beta",
+      badge: null,
       desc: "まず試してみたい方へ",
       price: "¥0",
       unit: "/月",
